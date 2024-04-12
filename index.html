@@ -66,19 +66,28 @@
 
 <script>
   document.querySelector("#enviar").addEventListener("click", validarForm);
-  function validarForm() {
-    validarInput("nome");
-    validarInput("email");
-    validarInput("dtNascimento");
-    validarInput("escolaridade");
-    validarInput("estadoCivil");
-    validarInput("senha");
-    validarInput("confirmar");
-    validarSexo("confirmar");
+
+
+function validarForm() {
+  validarInput("nome");
+  validarSexo();
+}
+
+  function validarSexo() {
+    let stSexo = false;
+    let lsSexo = document.getElementsByName("sexo");
+    for (sx of lsSexo) {
+      if (sx.checked) {
+        stSexo = true;
+      }
+    }
+    if(!stSexo){
+      document.getElementById("sexo").style.border = '1px solid red';
+    }else{
+      document.getElementById("sexo").style.border = '';
+    }
 
   }
-
-
 
   function validarInput(idItem) {
     let item = document.getElementById(idItem);
